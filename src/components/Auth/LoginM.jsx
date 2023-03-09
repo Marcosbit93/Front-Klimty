@@ -16,14 +16,31 @@ import React, { useState } from "react";
 import { logIn, signUpGoogle } from "../../utils/functions";
 import { auth } from "../../utils/firebaseConfig";
 import GoogleIcon from "@mui/icons-material/Google";
+import { useDispatch } from "react-redux";
+import { setUid } from "../../state/uid";
+import { onAuthStateChanged } from "firebase/auth";
+
+
+
+
 
 export const LoginM = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+
+
   const handleLogIn = (e) => {
     e.preventDefault()
     logIn(auth, email, password);
+    onAuthStateChanged(auth, (user) => {
+      dispatch(setUid(user.uid))
+      window.location.href = "/";
+    });
   };
+
+  
   const handleSignUpGoogle = () => {
     signUpGoogle(auth);
   };
@@ -42,7 +59,7 @@ export const LoginM = () => {
         <Typography component="h1" variant="h5">
            Log in
         </Typography>
-        <Box component="form" onSubmit={handleLogIn} noValidate sx={{ mt: 1 }}>
+        <Box component="form" noValidate sx={{ mt: 1 }}>
          
           <TextField
             margin="normal"

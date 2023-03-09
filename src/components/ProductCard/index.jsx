@@ -10,7 +10,7 @@ import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
+import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../../state/cart";
 import axios from "axios";
@@ -27,36 +27,28 @@ const ExpandMore = styled((props) => {
 }));
 
 const ProductCard = () => {
-  const detail =useSelector(state=>state.detail)
+  const detail = useSelector((state) => state.detail);
   const uid = useSelector((state) => state.uid);
-  const [userId, setUserid] = useState('')
-  // borrar
-  const uid2 = "holahola"
-  //
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const userId = localStorage.getItem("id");
 
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  
 
-  // // GET USER ID
-  // axios.get(`http://localhost:3001/api/user/uid/${uid2}`)
-  // .then(user => {setUserid(user.data.id)})
-  // .catch(err => console.error(err))
-  
+
   const handleAddCart = () => {
-   dispatch(setCart(detail))
-  //  axios.post(`http://localhost:3001/api/cart/${userId}/add/${detail.id}`)
-  //  .then(res => {
-  //    console.log(res.data);
-  //    return res.data
-  // })
-   .catch(err => console.error(err))
+  console.log(userId);
+  console.log(detail.id);
+    dispatch(setCart(detail))
+       axios.post(`http://localhost:3001/api/cart/${userId}/add/${detail.id}`)
+       .then(res => {
+         console.log(res.data);
+         return res.data
+      })
+      .catch((err) => console.error(err));
   };
-
-
 
   return (
     <div>
@@ -69,14 +61,14 @@ const ProductCard = () => {
           alt="Paella dish"
         />
         <CardContent>
-        <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary">
             ${detail?.price}
           </Typography>
-        <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary">
             {detail?.category}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {detail?.description} 
+            {detail?.description}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
@@ -96,9 +88,7 @@ const ProductCard = () => {
           <CardContent>
             <Typography paragraph>REVIEW</Typography>
             <Typography paragraph>REVIEW ID</Typography>
-            <Typography paragraph>
-              REVIEW TEXT.
-            </Typography>
+            <Typography paragraph>REVIEW TEXT.</Typography>
           </CardContent>
         </Collapse>
       </Card>
