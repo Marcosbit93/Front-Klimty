@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
@@ -10,11 +10,13 @@ import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import axios from "axios";
 
 //import react tags
 import ReactTags from "react-tagsinput";
 import "react-tagsinput/react-tagsinput.css";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setBooleano } from "../state/adminProduct";
 
 const Img = styled("img")({
   margin: "auto",
@@ -23,7 +25,7 @@ const Img = styled("img")({
   maxHeight: "100%",
 });
 
-export default function ListAdmin({ item, handleClick, editProducts }) {
+export default function ListAdminProduct({ item }) {
   // estado para confimar si abro el edit
   const [open, setOpen] = useState(false);
   // estados del edit en el modal
@@ -31,7 +33,7 @@ export default function ListAdmin({ item, handleClick, editProducts }) {
   const [price, setPrice] = useState(item.price);
   const [description, setDescription] = useState(item.description);
   const [category, setCategory] = useState(item.category);
-
+  const dispatch = useDispatch();
   const openModal = () => {
     setOpen(!open);
   };
@@ -39,15 +41,31 @@ export default function ListAdmin({ item, handleClick, editProducts }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const productId = item.id;
-    const updatedItem = { ...item, name, price, description, category };
-    editProducts(updatedItem, productId);
+    const userId = localStorage.getItem("id");
+    if (productId && userId) {
+      axios
+        .put(`http://localhost:3001/api/product/${userId}/edit/${item.id}`, {
+          name,
+          price,
+          description,
+          category,
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+    setName("");
+    setPrice("");
+    setDescription("");
+    setCategory("");
+    dispatch(setBooleano());
     setOpen();
   };
 
   return (
     <>
       {open ? (
-        <Modal open={open} openModal={openModal}>
+        <Modal open={open} openmodal={openModal}>
           <Box
             sx={{
               position: "absolute",
@@ -164,10 +182,10 @@ export default function ListAdmin({ item, handleClick, editProducts }) {
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="subtitle1" component="div">
-                  {item.name}
+                  {item?.name}
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  {item.artist.title}
+                  {item.artist?.title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   ID: {item.id}
@@ -187,13 +205,7 @@ export default function ListAdmin({ item, handleClick, editProducts }) {
 
             <Grid item>
               <Typography direction="column" component="div">
-                {
-                  <EditRemoveButtons
-                    item={item}
-                    handleClick={handleClick}
-                    openModal={openModal}
-                  />
-                }
+                {<EditRemoveButtons item={item} openModal={openModal} />}
               </Typography>
             </Grid>
           </Grid>

@@ -64,11 +64,11 @@ const Profile = () => {
         {change ? (
           <div className="userProfileInfo">
             <h4>User info</h4>
-            <label class="">{name.split(" ")[0]}</label>
+            <label className="">{name.split(" ")[0]}</label>
 
-            <label class="">{name.split(" ")[1]}</label>
+            <label className="">{name.split(" ")[1]}</label>
 
-            <label class="">{email}</label>
+            <label className="">{email}</label>
           </div>
         ) : (
           <>
@@ -94,20 +94,20 @@ const Profile = () => {
 
             <div className="userProfileInfo">
               <h4>User info</h4>
-              <label class="">Change firstname</label>
-              <input type="text" class="inputForm"></input>
-              <label class="">Change lastname</label>
-              <input type="text" class="inputForm"></input>
-              <label class="">Change email</label>
-              <input type="text" class="inputForm"></input>
+              <label className="">Change firstname</label>
+              <input type="text" className="inputForm"></input>
+              <label className="">Change lastname</label>
+              <input type="text" className="inputForm"></input>
+              <label className="">Change email</label>
+              <input type="text" className="inputForm"></input>
             </div>
             <div className="userProfileSecurity">
               <h4>Security</h4>
-              <label class="">Current password</label>
-              <input type="password" class="inputForm"></input>
-              <label class="">New password</label>
-              <input type="password" class="inputForm"></input>
-              <button type="submit" class="btn">
+              <label className="">Current password</label>
+              <input type="password" className="inputForm"></input>
+              <label className="">New password</label>
+              <input type="password" className="inputForm"></input>
+              <button type="submit" className="btn">
                 Submit
               </button>
             </div>

@@ -11,6 +11,8 @@ import searchReducer from "./search";
 import checkoutReducer from "./checkout";
 import reviewReducer from "./review";
 import pageReducer from "./page";
+import adminProductReducer from "./adminProduct";
+
 
 const store = configureStore({
   reducer: {
@@ -25,6 +27,7 @@ const store = configureStore({
     checkout: checkoutReducer,
     review: reviewReducer,
     page: pageReducer,
+    adminProduct: adminProductReducer
   },
 });
 
