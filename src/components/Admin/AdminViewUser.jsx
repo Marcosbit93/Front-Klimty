@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ListAdminUser from "../../commons/ListAdminUser";
-import AddButton from "../../commons/AddButton";
+import ModalAddUser from "../../commons/ModalAddUser";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
@@ -28,7 +28,7 @@ export default function AdminViewUser() {
     <>
       <div className="container">
         <div className="newProductContainer">
-          <AddButton />
+          <ModalAddUser />
         </div>
         <div className="productsContainer">
           {data &&

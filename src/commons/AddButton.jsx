@@ -10,7 +10,6 @@ export default function AddButton({ openModal }) {
         <AddIcon
           onClick={() => {
             openModal();
-            console.log("ME EJECUTE");
           }}
         />
       </Fab>

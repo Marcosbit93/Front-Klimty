@@ -46,7 +46,7 @@ export const SignupM = () => {
           <TextField
             margin="normal"
             required
-            fullWidth
+            fullwidth
             id="name"
             label="name"
             name="name"
@@ -57,7 +57,7 @@ export const SignupM = () => {
           <TextField
             margin="normal"
             required
-            fullWidth
+            fullwidth
             id="lastName"
             label="lastName"
             name="lastName"
@@ -68,7 +68,7 @@ export const SignupM = () => {
           <TextField
             margin="normal"
             required
-            fullWidth
+            fullwidth
             id="email"
             label="Email Address"
             name="email"
@@ -79,7 +79,7 @@ export const SignupM = () => {
           <TextField
             margin="normal"
             required
-            fullWidth
+            fullwidth
             name="password"
             label="Password"
             type="password"
@@ -90,7 +90,7 @@ export const SignupM = () => {
 
           <Button
             type="submit"
-            fullWidth
+            fullwidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
             onClick={handleSignUp}
@@ -99,7 +99,7 @@ export const SignupM = () => {
           </Button>
           <Button
             sx={{ mt: 3, mb: 2 }}
-            fullWidth
+            fullwidth
             onClick={handleSignUpGoogle}
             variant="outlined"
           >
@@ -107,7 +107,7 @@ export const SignupM = () => {
           </Button>
           <Button
             sx={{ mt: 3, mb: 2 }}
-            fullWidth
+            fullwidth
             onClick={handleSignUpFacebook}
             variant="outlined"
           >

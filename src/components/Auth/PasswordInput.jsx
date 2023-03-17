@@ -18,7 +18,7 @@ export const PasswordInput = ({ setPassword }) => {
 
   return (
 
-      <FormControl fullWidth sx={{ m: 1, width: "25ch" }} variant="filled">
+      <FormControl fullwidth sx={{ m: 1, width: "25ch" }} variant="filled">
         <InputLabel htmlFor="filled-adornment-password">Password</InputLabel>
         <FilledInput
           id="filled-adornment-password"

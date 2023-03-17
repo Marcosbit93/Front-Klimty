@@ -35,7 +35,7 @@ export default function AddressForm() {
               id="firstName"
               name="name"
               label="First name"
-              fullWidth
+              fullwidth
               autoComplete="given-name"
               variant="standard"
               value={checkout.name}
@@ -48,7 +48,7 @@ export default function AddressForm() {
               id="lastName"
               name="lastName"
               label="Last name"
-              fullWidth
+              fullwidth
               autoComplete="family-name"
               variant="standard"
               value={checkout.lastName}
@@ -61,7 +61,7 @@ export default function AddressForm() {
               id="address1"
               name="address1"
               label="Address line 1"
-              fullWidth
+              fullwidth
               autoComplete="shipping address-line1"
               variant="standard"
               value={checkout.address1}
@@ -73,7 +73,7 @@ export default function AddressForm() {
               id="address2"
               name="address2"
               label="Address line 2"
-              fullWidth
+              fullwidth
               autoComplete="shipping address-line2"
               variant="standard"
               value={checkout.address2}
@@ -86,7 +86,7 @@ export default function AddressForm() {
               id="city"
               name="city"
               label="City"
-              fullWidth
+              fullwidth
               autoComplete="shipping address-level2"
               variant="standard"
               value={checkout.city}
@@ -98,7 +98,7 @@ export default function AddressForm() {
               id="state"
               name="region"
               label="State/Province/Region"
-              fullWidth
+              fullwidth
               variant="standard"
               value={checkout.region}
               onChange={(e) => handleInputChange(e)}
@@ -110,7 +110,7 @@ export default function AddressForm() {
               id="zip"
               name="zip"
               label="Zip / Postal code"
-              fullWidth
+              fullwidth
               autoComplete="shipping postal-code"
               variant="standard"
               value={checkout.zip}
@@ -123,7 +123,7 @@ export default function AddressForm() {
               id="country"
               name="country"
               label="Country"
-              fullWidth
+              fullwidth
               autoComplete="shipping country"
               variant="standard"
               value={checkout.country}

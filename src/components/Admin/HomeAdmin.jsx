@@ -1,11 +1,9 @@
 import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
-import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 
 export const HomeAdmin = () => {
-  const navigate = useNavigate();
   return (
     <>
       <Typography>Hey Amdmin!</Typography>

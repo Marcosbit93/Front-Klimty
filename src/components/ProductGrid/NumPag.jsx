@@ -1,4 +1,4 @@
-import { Pagination } from "@mui/lab";
+import { Pagination } from '@mui/material'
 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ListAdminArtist from "../../commons/ListAdminArtist";
-import AddButton from "../../commons/AddButton";
+import ModalAddArtist from "../../commons/ModalAddArtist";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
@@ -28,8 +28,8 @@ export default function AdminViewArtist() {
   return (
     <>
       <div className="container">
-        <div className="newProductContainer">
-          <AddButton />
+      <div className="newProductContainer">
+          <ModalAddArtist />
         </div>
         <div className="productsContainer">
           {data &&

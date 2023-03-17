@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import ListAdminProduct from "../../commons/ListAdminProduct";
 
 import axios from "axios";
-import { Search } from "../../commons/Search";
-import { useDispatch, useSelector } from "react-redux";
-import { setData } from "../../state/adminProduct";
 import ModalAddProduct from "../../commons/ModalAddProduct";
+import { useSelector } from "react-redux";
 // import { useNavigate } from "react-router";
 
 export default function AdminViewProduct() {
@@ -64,13 +62,6 @@ export default function AdminViewProduct() {
     <>
       <div className="container">
         <div className="newProductContainer">
-          {/* <Search
-            setData={setData}
-            setSearch={setSearch}
-            handleClick={handleClick}
-          /> */}
-        </div>
-        <div>
           <ModalAddProduct />
         </div>
         <div className="productsContainer">
