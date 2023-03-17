@@ -36,26 +36,28 @@ export default function ModalAddProduct() {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState([]);
   const [artists, setArtists] = useState([]);
-  const [artist, setArtist] = useState("");
+  const [artistId, setArtistId] = useState("");
 
   const openModal = () => {
     setOpen(!open);
   };
 
   const handleSubmit = (e) => {
-    const photo_URL =
+    const photo_url =
       "https://www.artic.edu/iiif/2/23bb6125-d75b-1648-dc91-8c2a45ed3d88/full/843,/0/default.jpg";
     e.preventDefault();
     const userId = localStorage.getItem("id");
+
     if (userId) {
+      console.log("el artista enviado ID", artistId);
       axios
         .post(`http://localhost:3001/api/product/${userId}/add/`, {
           name,
           price,
           description,
           category,
-          photo_URL,
-          artist,
+          photo_url,
+          artistId,
         })
         .catch((error) => {
           console.error(error);
@@ -71,6 +73,7 @@ export default function ModalAddProduct() {
   useEffect(() => {
     axios.get(`http://localhost:3001/api/artist`).then((data) => {
       const artistsBack = data.data;
+      console.log(data.data);
       const artists = artistsBack.map((artist) => artist.title);
       setArtists(artists);
     });
@@ -141,12 +144,12 @@ export default function ModalAddProduct() {
                   onChange={(e) => setDescription(e.target.value)}
                   sx={{ marginBottom: "10px", width: "100%", display: "block" }}
                 />
-                <TextField
-                  label="Categories"
-                  variant="outlined"
+                <ReactTags
+                  inputAttributes={{ style: { width: "100%" } }}
                   value={category}
-                  onChange={(e) => setCategory([...category, e.target.value])}
-                  sx={{ marginBottom: "10px", width: "100%", display: "block" }}
+                  onChange={setCategory}
+                  inputProps={{ placeholder: "Add category" }}
+                  sx={{ marginBottom: "8px", width: "100%", display: "block" }}
                 />
                 <Button
                   id="basic-button"
@@ -160,7 +163,7 @@ export default function ModalAddProduct() {
                 <Menu
                   id="basic-menu"
                   anchorEl={anchorEl}
-                  openArtist={openArtist}
+                  open={openArtist}
                   onClose={handleClose}
                   MenuListProps={{
                     "aria-labelledby": "basic-button",
@@ -168,7 +171,7 @@ export default function ModalAddProduct() {
                 >
                   {artists.map((artist, i) => {
                     return (
-                      <MenuItem key={i} onClick={() => setArtist(artist)}>
+                      <MenuItem key={i} onClick={() => setArtistId(i + 1)}>
                         {artist}
                       </MenuItem>
                     );
