@@ -96,3 +96,26 @@
   border-radius: 5px;
   border: 1px solid rgb(196, 196, 196);
 }
+
+.container{
+  width: 70%;
+  margin: 4rem auto;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  
+  border-radius: 6px;
+}
+
+.newProductContainer{
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.productsContainer{
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  flex-direction: column;
+  margin: 0 auto;
+}

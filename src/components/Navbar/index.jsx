@@ -1,93 +1,34 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import { Logo } from './Logo';
-import { BoardUser } from './BoardUser';
-
-const pages = ['Products', 'Pricing', 'Blog'];
-
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Container from "@mui/material/Container";
+import { Logo } from "./Logo";
+import { BoardUser } from "./BoardUser";
+import { SearchInput } from "./SearchInput";
+import { Cart } from "./Cart";
+import DashboardArtists from "./DashboardArtists";
+import DashboardCategories from "./DashboardCategories";
 
 export const Navbar = () => {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-   
-  
-    const handleOpenNavMenu = (event) => {
-      setAnchorElNav(event.currentTarget);
-    };
-  
-  
-    const handleCloseNavMenu = () => {
-      setAnchorElNav(null);
-    };
-  
-  
   return (
-    <AppBar position="static">
-    <Container maxWidth="xl">
-      <Toolbar disableGutters>
-       <Logo/>
-
-        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleOpenNavMenu}
-            color="inherit"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorElNav}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            open={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
-            sx={{
-              display: { xs: 'block', md: 'none' },
-            }}
-          >
-            {pages.map((page) => (
-              <MenuItem key={page} onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">{page}</Typography>
-              </MenuItem>
-            ))}
-          </Menu>
-        </Box>
-        
- 
-        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          {pages.map((page) => (
-            <Button
-              key={page}
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-              {page}
-            </Button>
-          ))}
-        </Box>
-
-        <BoardUser/>
-      </Toolbar>
-    </Container>
-  </AppBar>
-  )
-}
+    <AppBar position="sticky" sx={{ mb: 2 }}>
+      <Container maxWidth="xl">
+        <Toolbar
+          disableGutters
+          sx={{
+            width: "100%",
+            display: "inline-flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Logo />
+          <DashboardArtists />
+          <DashboardCategories />
+          <SearchInput />
+          <BoardUser />
+          <Cart />
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
+};
